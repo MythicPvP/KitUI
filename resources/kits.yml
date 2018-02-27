@@ -41,7 +41,33 @@ testkit:
 
   # Info to show when selected a Kit in UI form
   info: "This kit is too op XD Cost: 50$"
-testkit2:
+Mythic:
+
+  items:
+  - "322:1:256"
+  - "267:0:1:Mythic Sword:sharpness:90:unbreaking:90:looting:90:fire_aspect:2"
+  helmet: "310:0:1:Mythic Helmet:protection:90:unbreaking:90"
+  chestplate: "311:0:1:Mythic Chestplate:protection:90:unbreaking:90"
+  leggings: "312:0:1:Mythic Leggings:protection:90:unbreaking:90"
+  boots: "313:0:1:Mythic Boots:protection:90:unbreaking:90"
+
+  commands:
+  - "tell {player} You Have Claimed The Mythic Kit"
+
+  cooldown:
+    hours: 3
+    minutes: 0
+
+  effects:
+  - "speed:120:2"
+
+  money: 0
+  
+  image-url: ""
+
+  info: "Most OP Kit On The Server"
+  
+OverLord:
 
   items:
   - "260:0:10"
@@ -52,7 +78,7 @@ testkit2:
   boots: "305:0:1"
 
   commands:
-  - "tell {player} Kit 2 claimed!"
+  - "tell {player} Kit 3 claimed!"
 
   cooldown:
     hours: 24
@@ -61,13 +87,13 @@ testkit2:
   effects:
   - "speed:120:2"
 
-  money: 250
+  money: 150
   
   image-url: ""
 
-  info: "Kit 2! Cost: 250$"
+  info: "Kit 3! Cost: 150$"
   
-testkit3:
+  Lord:
 
   items:
   - "260:0:10"
