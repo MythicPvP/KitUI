@@ -22,7 +22,6 @@ Starter:
 
   commands: # {player} will get replaced by player's name
   - "tell {player} Kit claimed!"
-  - "give {player}"
 
   cooldown:
     hours: 0
@@ -42,6 +41,7 @@ Starter:
 
   # Info to show when selected a Kit in UI form
   info: "This Kit Is The Starter Kit"
+  
 Mythic:
 
   items:
@@ -60,13 +60,39 @@ Mythic:
     minutes: 0
 
   effects:
-  - "speed:120:2"
+  - "speed:120000:6"
 
   money: 0
   
   image-url: ""
 
   info: "Most OP Kit On The Server"
+  
+  Omega:
+
+  items:
+  - "322:1:256"
+  - "267:0:1:Mythic Sword:sharpness:80:unbreaking:80:looting:80:fire_aspect:2"
+  helmet: "310:0:1:Mythic Helmet:protection:80:unbreaking:80"
+  chestplate: "311:0:1:Mythic Chestplate:protection:80:unbreaking:80"
+  leggings: "312:0:1:Mythic Leggings:protection:80:unbreaking:80"
+  boots: "313:0:1:Mythic Boots:protection:80:unbreaking:80"
+
+  commands:
+  - "tell {player} You Have Claimed The Omega Kit"
+
+  cooldown:
+    hours: 3
+    minutes: 0
+
+  effects:
+  - "speed:120000:4"
+
+  money: 0
+  
+  image-url: ""
+
+  info: 
   
 OverLord:
 
