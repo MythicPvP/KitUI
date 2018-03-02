@@ -1,5 +1,5 @@
 ---
-testkit:
+Starter:
   # Format: "id:damage:count:name:ench_name:ench_level"
 
   # If you want only custom name (no enchantments): "id:damage:count:name"
@@ -22,25 +22,26 @@ testkit:
 
   commands: # {player} will get replaced by player's name
   - "tell {player} Kit claimed!"
+  - "give {player}"
 
   cooldown:
-    hours: 24
+    hours: 0
     minutes: 30
 
   # Format: "name:time:amplifier"
   # Time is in seconds
   effects:
-  - "speed:120:2"
+  - "speed:1200:2"
 
   # Add a cost for the kit. Compatible with EconomyAPI only
   # Put 0 if you want the kit to be free
-  money: 50
+  money: 0
   
   #Enter image url for the kit. png image. The image will be shown in kit main menu if its compatible.
   image-url: "https://minecraft.gamepedia.com/media/minecraft.gamepedia.com/f/f2/Stone_Sword.png?version=ede6f1623f23eb3959b3d5287dc54bb0"
 
   # Info to show when selected a Kit in UI form
-  info: "This kit is too op XD Cost: 50$"
+  info: "This Kit Is The Starter Kit"
 Mythic:
 
   items:
