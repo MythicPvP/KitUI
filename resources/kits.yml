@@ -71,7 +71,6 @@ Mythic:
   Omega:
 
   items:
-  - "322:1:256"
   - "267:0:1:Mythic Sword:sharpness:80:unbreaking:80:looting:80:fire_aspect:2"
   helmet: "310:0:1:Mythic Helmet:protection:80:unbreaking:80"
   chestplate: "311:0:1:Mythic Chestplate:protection:80:unbreaking:80"
@@ -120,7 +119,7 @@ OverLord:
 
   info: "Kit 3! Cost: 150$"
   
-  Lord:
+ Lord:
 
   items:
   - "260:0:10"
