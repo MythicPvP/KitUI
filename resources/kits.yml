@@ -1,47 +1,4 @@
 ---
-Starter:
-  # Format: "id:damage:count:name:ench_name:ench_level"
-
-  # If you want only custom name (no enchantments): "id:damage:count:name"
-
-  # If you don't want enchantments or custom name: "id:damage:count"
-
-  # If you want only enchantments (no custom name): "id:damage:count:DEFAULT:ench_name:ench_level" -- you have to put DEFAULT in the name field
-
-  # If you want more than one enchantment just do: "id:damage:count:name:ench1_name:ench1_level:ench2_name:ench2_level"
-  # or "id:damage:count:DEFAULT:ench1_name:ench1_level:ench2_name:ench2_level" if you don't want a custom item name
-
-  # Please note: You have to write numeric IDs
-  items:
-  - "260:0:10"
-  - "267:0:1:Sword Name:sharpness:3:knockback:1"
-  helmet: "302:0:1"
-  chestplate: "303:0:1:DEFAULT:protection:1"
-  leggings: "304:0:1:Leggings Name"
-  boots: "305:0:1"
-
-  commands: # {player} will get replaced by player's name
-  - "tell {player} Kit claimed!"
-
-  cooldown:
-    hours: 0
-    minutes: 30
-
-  # Format: "name:time:amplifier"
-  # Time is in seconds
-  effects:
-  - "speed:1200:2"
-
-  # Add a cost for the kit. Compatible with EconomyAPI only
-  # Put 0 if you want the kit to be free
-  money: 0
-  
-  #Enter image url for the kit. png image. The image will be shown in kit main menu if its compatible.
-  image-url: "https://minecraft.gamepedia.com/media/minecraft.gamepedia.com/f/f2/Stone_Sword.png?version=ede6f1623f23eb3959b3d5287dc54bb0"
-
-  # Info to show when selected a Kit in UI form
-  info: "This Kit Is The Starter Kit"
-  
 Mythic:
 
   items:
@@ -67,8 +24,8 @@ Mythic:
   image-url: ""
 
   info: "Most OP Kit On The Server"
-  
-  Omega:
+
+Omega:
 
   items:
   - "267:0:1:Mythic Sword:sharpness:80:unbreaking:80:looting:80:fire_aspect:2"
@@ -92,7 +49,7 @@ Mythic:
   image-url: ""
 
   info: 
-  
+
 OverLord:
 
   items:
@@ -118,8 +75,8 @@ OverLord:
   image-url: ""
 
   info: "Kit 3! Cost: 150$"
-  
- Lord:
+
+Lord:
 
   items:
   - "260:0:10"
@@ -144,4 +101,30 @@ OverLord:
   image-url: ""
 
   info: "Kit 3! Cost: 150$"
+
+Titian:
+
+  items:
+  - "260:0:10"
+  - "267:0:1:Sword Name:sharpness:3:knockback:1"
+  helmet: "302:0:1"
+  chestplate: "303:0:1:DEFAULT:protection:1"
+  leggings: "304:0:1:Leggings Name"
+  boots: "305:0:1"
+
+  commands:
+  - "tell {player} Kit 3 claimed!"
+
+  cooldown:
+    hours: 24
+    minutes: 30
+
+  effects:
+  - "speed:120:2"
+
+  money: 0
+
+  image-url: ""
+
+  info:
 ...
