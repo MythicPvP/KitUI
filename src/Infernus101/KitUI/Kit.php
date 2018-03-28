@@ -1,9 +1,10 @@
 <?php
-
+ 
 namespace Infernus101\KitUI;
-
+ 
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\entity\Effect;
+use pocketmine\entity\EffectInstance;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
@@ -12,9 +13,9 @@ use pocketmine\Player;
 use onebone\economyapi\EconomyAPI;
 use PiggyCustomEnchants\CustomEnchants\CustomEnchants;
 use pocketmine\Server;
-
+ 
 class Kit{
-
+ 
     public $pl;
     public $data;
     public $name;
@@ -22,7 +23,7 @@ class Kit{
     public $timer;
     public $timers = [];
     public $id = [];
-
+ 
     public function __construct(Main $pl, array $data, string $name){
         $this->pl = $pl;
         $this->data = $data;
@@ -35,15 +36,15 @@ class Kit{
             $this->cost = (int) $this->data["money"];
         }
     }
-
+ 
     public function getName() : string{
         return $this->name;
     }
-
+ 
     public function add(Player $player){
         $inv = $player->getInventory();
 	$arm = $player->getArmorInventory();
-
+ 
         if($this->pl->config->get("clear-effect")){
             $player->removeAllEffects();
         }
@@ -74,7 +75,7 @@ class Kit{
         isset($this->data["leggings"]) and $arm->setLeggings($this->loadItem(...explode(":", $this->data["leggings"])));
         isset($this->data["boots"]) and $arm->setBoots($this->loadItem(...explode(":", $this->data["boots"])));
 	$arm->sendContents($player);
-
+ 
         if(isset($this->data["effects"])){
             foreach($this->data["effects"] as $effectString){
                 $e = $this->loadEffect(...explode(":", $effectString));
@@ -83,13 +84,13 @@ class Kit{
                 }
             }
         }
-
+ 
         if(isset($this->data["commands"]) and is_array($this->data["commands"])){
             foreach($this->data["commands"] as $cmd){
                 $this->pl->getServer()->dispatchCommand(new ConsoleCommandSender(), str_replace("{player}", $player->getName(), $cmd));
             }
         }
-
+ 
         if($this->timer){
             $this->timers[strtolower($player->getName())] = $this->timer;
         }
@@ -97,9 +98,9 @@ class Kit{
 	    EconomyAPI::getInstance()->reduceMoney($player, $this->data["money"]);
 	}
         $this->pl->kitused[strtolower($player->getName())] = $this;
-
+ 
     }
-
+ 
     public function loadItem(int $id = 0, int $damage = 0, int $count = 1, string $name = "default", ...$enchantments) : Item{
         $item = Item::get($id, $damage, $count);
         if(strtolower($name) !== "default"){
@@ -122,15 +123,11 @@ class Kit{
         }
         return $item;
     }
-
+ 
     public function loadEffect(string $name = "INVALID", int $seconds = 60, int $amplifier = 1){
-        $e = Effect::getEffectByName($name);
-        if($e !== null){
-            return $e->setDuration($seconds * 20)->setAmlifier($amplifier);
-        }
-        return null;
+        return new EffectInstance(Effect::getEffectByName($name), $seconds * 20, $amplifier);
     }
-
+ 
     public function getTimerMinutes() : int{
         $min = 0;
         if(isset($this->data["cooldown"]["minutes"])){
@@ -141,7 +138,7 @@ class Kit{
         }
         return $min;
     }
-
+ 
     public function getTimerLeft(Player $player) : string{
         if(($minutes = $this->timers[strtolower($player->getName())]) < 60){
             return $this->pl->language->getTranslation("timer-format1", $minutes);
@@ -151,7 +148,7 @@ class Kit{
         }
         return $this->pl->language->getTranslation("timer-format3", $minutes / 60);
     }
-
+ 
     public function processTimer(){
         foreach($this->timers as $player => $min){
             $this->timers[$player] -= 1;
@@ -160,15 +157,15 @@ class Kit{
             }
         }
     }
-
+ 
     public function testPermission(Player $player) : bool{
         return $player->hasPermission("kit.".strtolower($this->name));
     }
-
+ 
     public function save(){
         if(count($this->timers) > 0){
             file_put_contents($this->pl->getDataFolder()."timer/".strtolower($this->name).".sl", serialize($this->timers));
         }
     }
-
+ 
 }
